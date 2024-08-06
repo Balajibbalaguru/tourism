@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="destination.css">
+</head>
+<body>
+    <script>
+document.getElementById('go-button').addEventListener('click', function() {
+    const searchQuery = document.getElementById('search-bar').value.toLowerCase();
+    const locationFilter = document.getElementById('location-filter').value;
+    const ratingFilter = document.getElementById('rating-filter').value;
+
+    const destinationItems = document.querySelectorAll('.destination-item');
+
+    destinationItems.forEach(item => {
+        const title = item.querySelector('.destination-info h3').innerText.toLowerCase();
+        const location = item.getAttribute('data-location');
+        const rating = item.getAttribute('data-rating');
+
+        let matchesSearch = title.includes(searchQuery);
+        let matchesLocation = locationFilter === 'all' || location === locationFilter;
+        let matchesRating = ratingFilter === 'all' || rating === ratingFilter;
+
+        if (matchesSearch && matchesLocation && matchesRating) {
+            item.style.display = 'block';
+        } else {
+            item.style.display = 'none';
+        }
+    });
+});
+</script>
+
+    <script src="destination.js"></script>
+    <div class="navbar">
+        <div class="logo-container">
+            <img src="images/logo.png" alt="Travel Trail Logo" class="logo"> <!-- Replace with your logo image path -->
+        </div>
+        <ul class="nav-links">
+            <li><a href="main.html">Home</a></li>
+            <li><a href="destination.html">Destinations</a></li>
+            <li><a href="#tours">Tours</a></li>
+            <li><a href="#ai">AI</a></li>
+            <li><a href="#login">Login</a></li>
+        </ul>
+    </div>
+
+<!-- Add this section to your HTML file -->
+<section id="destinations" class="destinations">
+    <div class="container">
+        <h2>Explore Your Next Destination</h2>
+        
+        <!-- Search and Filters -->
+        <div class="search-filters">
+            <input type="text" id="search-bar" placeholder="Search states...">
+            <div class="filters">
+                <select id="region-filter">
+                    <option value="">Region</option>
+                    <option value="north">North</option>
+                    <option value="south">South</option>
+                    <option value="east">East</option>
+                    <option value="west">West</option>
+                </select>
+                <select id="rating-filter">
+                    <option value="">Rating</option>
+                    <option value="5">★★★★★</option>
+                    <option value="4">★★★★☆</option>
+                    <option value="3">★★★☆☆</option>
+                </select>
+                <select id="type-filter">
+                    <option value="">Type</option>
+                    <option value="beach">Beach</option>
+                    <option value="mountain">Mountain</option>
+                    <option value="city">City</option>
+                </select>
+            </div>
+            <button id="go-button" class="view-more">GO</button>
+        </div>
+
+        <!-- Destination Grid -->
+        <div class="destination-list">
+            <!-- California -->
+            <div class="destination-item">
+                <img src="images/california.png" alt="California">
+                <div class="destination-info">
+                    <h3>California <span class="favorite" onclick="toggleFavorite(this)">♡</span></h3>
+                    <p>A beautiful place to explore with stunning landscapes.</p>
+                    <span class="rating">Rating: ★★★★☆</span>
+                    <br><br>
+                    <button class="view-more">View More</button>
+                </div>
+            </div>
+        
+            <!-- Missouri -->
+            <div class="destination-item">
+                <img src="images/missouri.png" alt="Missouri">
+                <div class="destination-info">
+                    <h3>Missouri <span class="favorite" onclick="toggleFavorite(this)">♡</span></h3>
+                    <p>Discover the charm of Missouri with its diverse attractions.</p>
+                    <span class="rating">Rating: ★★★★☆</span>
+                    <br><br>
+                    <button class="view-more">View More</button>
+                </div>
+            </div>
+        
+            <!-- Arizona -->
+            <div class="destination-item">
+                <img src="images/arizona.png" alt="Arizona">
+                <div class="destination-info">
+                    <h3>Arizona <span class="favorite" onclick="toggleFavorite(this)">♡</span></h3>
+                    <p>Explore the deserts and vibrant cities of Arizona.</p>
+                    <span class="rating">Rating: ★★★★☆</span>
+                    <br><br>
+                    <button class="view-more">View More</button>
+                </div>
+            </div>
+        
+            <!-- Pennsylvania -->
+            <div class="destination-item">
+                <img src="images/pennsylvania.png" alt="Pennsylvania">
+                <div class="destination-info">
+                    <h3>Pennsylvania <span class="favorite" onclick="toggleFavorite(this)">♡</span></h3>
+                    <p>Experience the rich history and landscapes of Pennsylvania.</p>
+                    <span class="rating">Rating: ★★★★☆</span>
+                    <br><br>
+                    <button class="view-more">View More</button>
+                </div>
+            </div>
+        
+            <!-- Tennessee -->
+            <div class="destination-item">
+                <img src="images/tennessee.png" alt="Tennessee">
+                <div class="destination-info">
+                    <h3>Tennessee <span class="favorite" onclick="toggleFavorite(this)">♡</span></h3>
+                    <p>Enjoy the music and scenic beauty of Tennessee.</p>
+                    <span class="rating">Rating: ★★★★☆</span>
+                    <br><br>
+                    <button class="view-more">View More</button>
+                </div>
+            </div>
+        
+            <!-- Florida -->
+            <div class="destination-item">
+                <img src="images/florida.png" alt="Florida">
+                <div class="destination-info">
+                    <h3>Florida <span class="favorite" onclick="toggleFavorite(this)">♡</span></h3>
+                    <p>Relax on the beaches and explore the attractions of Florida.</p>
+                    <span class="rating">Rating: ★★★★☆</span>
+                    <br><br>
+                    <button class="view-more">View More</button>
+                </div>
+            </div>
+        
+            <!-- Indiana -->
+            <div class="destination-item">
+                <img src="images/indiana.png" alt="Indiana">
+                <div class="destination-info">
+                    <h3>Indiana <span class="favorite" onclick="toggleFavorite(this)">♡</span></h3>
+                    <p>Explore the heartland and cultural sites of Indiana.</p>
+                    <span class="rating">Rating: ★★★★☆</span>
+                    <br><br>
+                    <button class="view-more">View More</button>
+                </div>
+            </div>
+        
+            <!-- Louisiana -->
+            <div class="destination-item">
+                <img src="images/louisiana.png" alt="Louisiana">
+                <div class="destination-info">
+                    <h3>Louisiana <span class="favorite" onclick="toggleFavorite(this)">♡</span></h3>
+                    <p>Experience the vibrant culture and cuisine of Louisiana.</p>
+                    <span class="rating">Rating: ★★★★☆</span>
+                    <br><br>
+                    <button class="view-more">View More</button>
+                </div>
+            </div>
+        
+            <!-- Nevada -->
+            <div class="destination-item">
+                <img src="images/nevada.png" alt="Nevada">
+                <div class="destination-info">
+                    <h3>Nevada <span class="favorite" onclick="toggleFavorite(this)">♡</span></h3>
+                    <p>Discover the casinos and desert landscapes of Nevada.</p>
+                    <span class="rating">Rating: ★★★★☆</span>
+                    <br><br>
+                    <button class="view-more">View More</button>
+                </div>
+            </div>
+        
+            <!-- Idaho -->
+            <div class="destination-item">
+                <img src="images/idaho.png" alt="Idaho">
+                <div class="destination-info">
+                    <h3>Idaho <span class="favorite" onclick="toggleFavorite(this)">♡</span></h3>
+                    <p>Enjoy the natural beauty and outdoor activities in Idaho.</p>
+                    <span class="rating">Rating: ★★★★☆</span>
+                    <br><br>
+                    <button class="view-more">View More</button>
+                </div>
+            </div>
+        
+            <!-- Delaware -->
+            <div class="destination-item">
+                <img src="images/delaware.png" alt="Delaware">
+                <div class="destination-info">
+                    <h3>Delaware <span class="favorite" onclick="toggleFavorite(this)">♡</span></h3>
+                    <p>Explore the small yet charming state of Delaware.</p>
+                    <span class="rating">Rating: ★★★★☆</span>
+                    <br><br>
+                    <button class="view-more">View More</button>
+                </div>
+            </div>
+        
+            <!-- Illinois -->
+            <div class="destination-item">
+                <img src="images/illinois.png" alt="Illinois">
+                <div class="destination-info">
+                    <h3>Illinois <span class="favorite" onclick="toggleFavorite(this)">♡</span></h3>
+                    <p>Visit the bustling city of Chicago and other attractions in Illinois.</p>
+                    <span class="rating">Rating: ★★★★☆</span>
+                    <br><br>
+                    <button class="view-more">View More</button>
+                </div>
+            </div>
+        
+            <!-- New Jersey -->
+            <div class="destination-item">
+                <img src="images/new_jersey.png" alt="New Jersey">
+                <div class="destination-info">
+                    <h3>New Jersey <span class="favorite" onclick="toggleFavorite(this)">♡</span></h3>
+                    <p>Discover the beaches and vibrant culture of New Jersey.</p>
+                    <span class="rating">Rating: ★★★★☆</span>
+                    <br><br>
+                    <button class="view-more">View More</button>
+                </div>
+            </div>
+        
+            <!-- North Carolina -->
+            <div class="destination-item">
+                <img src="images/north_carolina.png" alt="North Carolina">
+                <div class="destination-info">
+                    <h3>North Carolina <span class="favorite" onclick="toggleFavorite(this)">♡</span></h3>
+                    <p>Explore the mountains and coastlines of North Carolina.</p>
+                    <span class="rating">Rating: ★★★★☆</span>
+                    <br><br>
+                    <button class="view-more">View More</button>
+                </div>
+            </div>
+        
+            <!-- Colorado -->
+            <div class="destination-item">
+                <img src="images/colorado.png" alt="Colorado">
+                <div class="destination-info">
+                    <h3>Colorado <span class="favorite" onclick="toggleFavorite(this)">♡</span></h3>
+                    <p>Enjoy the majestic Rocky Mountains in Colorado.</p>
+                    <span class="rating">Rating: ★★★★☆</span>
+                    <br><br>
+                    <button class="view-more">View More</button>
+                </div>
+            </div>
+        
+            <!-- Washington -->
+            <div class="destination-item">
+                <img src="images/washington.png" alt="Washington">
+                <div class="destination-info">
+                    <h3>Washington <span class="favorite" onclick="toggleFavorite(this)">♡</span></h3>
+                    <p>Visit the iconic landmarks and natural beauty of Washington.</p>
+                    <span class="rating">Rating: ★★★★☆</span>
+                    <br><br>
+                    <button class="view-more">View More</button>
+                </div>
+            </div>
+        
+            <!-- Hawaii -->
+            <div class="destination-item">
+                <img src="images/hawaii.png" alt="Hawaii">
+                <div class="destination-info">
+                    <h3>Hawaii <span class="favorite" onclick="toggleFavorite(this)">♡</span></h3>
+                    <p>Experience the tropical paradise of Hawaii.</p>
+                    <span class="rating">Rating: ★★★★☆</span>
+                    <br><br>
+                    <button class="view-more">View More</button>
+                </div>
+            </div>
+        
+            <!-- Utah -->
+            <div class="destination-item">
+                <img src="images/utah.png" alt="Utah">
+                <div class="destination-info">
+                    <h3>Utah <span class="favorite" onclick="toggleFavorite(this)">♡</span></h3>
+                    <p>Explore the stunning national parks and landscapes of Utah.</p>
+                    <span class="rating">Rating: ★★★★☆</span>
+                    <br><br>
+                    <button class="view-more">View More</button>
+                </div>
+            </div>
+        
+            <!-- Texas -->
+            <div class="destination-item">
+                <img src="images/texas.png" alt="Texas">
+                <div class="destination-info">
+                    <h3>Texas <span class="favorite" onclick="toggleFavorite(this)">♡</span></h3>
+                    <p>Discover the vast landscapes and vibrant cities of Texas.</p>
+                    <span class="rating">Rating: ★★★★☆</span>
+                    <br><br>
+                    <button class="view-more">View More</button>
+                </div>
+            </div>
+        
+            <!-- Montana -->
+            <div class="destination-item">
+                <img src="images/montana.png" alt="Montana">
+                <div class="destination-info">
+                    <h3>Montana <span class="favorite" onclick="toggleFavorite(this)">♡</span></h3>
+                    <p>Enjoy the open spaces and natural beauty of Montana.</p>
+                    <span class="rating">Rating: ★★★★☆</span>
+                    <br><br>
+                    <button class="view-more">View More</button>
+                </div>
+            </div>
+        
+            <!-- Michigan -->
+            <div class="destination-item">
+                <img src="images/michigan.png" alt="Michigan">
+                <div class="destination-info">
+                    <h3>Michigan <span class="favorite" onclick="toggleFavorite(this)">♡</span></h3>
+                    <p>Explore the Great Lakes and cultural sites of Michigan.</p>
+                    <span class="rating">Rating: ★★★★☆</span>
+                    <br><br>
+                    <button class="view-more">View More</button>
+                </div>
+            </div>
+        
+            <!-- South Dakota -->
+            <div class="destination-item">
+                <img src="images/south_dakota.png" alt="South Dakota">
+                <div class="destination-info">
+                    <h3>South Dakota <span class="favorite" onclick="toggleFavorite(this)">♡</span></h3>
+                    <p>Visit the iconic landmarks and landscapes of South Dakota.</p>
+                    <span class="rating">Rating: ★★★★☆</span>
+                    <br><br>
+                    <button class="view-more">View More</button>
+                </div>
+            </div>
+        
+            <!-- Massachusetts -->
+            <div class="destination-item">
+                <img src="images/massachusetts.png" alt="Massachusetts">
+                <div class="destination-info">
+                    <h3>Massachusetts <span class="favorite" onclick="toggleFavorite(this)">♡</span></h3>
+                    <p>Experience the history and beauty of Massachusetts.</p>
+                    <span class="rating">Rating: ★★★★☆</span>
+                    <br><br>
+                    <button class="view-more">View More</button>
+                </div>
+            </div>
+        
+            <!-- Vermont -->
+            <div class="destination-item">
+                <img src="images/vermont.png" alt="Vermont">
+                <div class="destination-info">
+                    <h3>Vermont <span class="favorite" onclick="toggleFavorite(this)">♡</span></h3>
+                    <p>Discover the charming landscapes and towns of Vermont.</p>
+                    <span class="rating">Rating: ★★★★☆</span>
+                    <br><br>
+                    <button class="view-more">View More</button>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</section>
+
+
+</body>
+</html>
